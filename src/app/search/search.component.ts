@@ -14,7 +14,7 @@ export class SearchComponent {
   dataSource:any= [];
   userData:any;
   selectedCountry:any = [];
-  universities: any;
+  universities: any = [];
   otherCountry:any;
   searchCount:any= 0
   countryList:any = [

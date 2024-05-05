@@ -9,14 +9,16 @@
 
           </div>
     </div>
+    <h4>Select country</h4>
     <select id="country"  [(ngModel)]="selectedCountry">
         <option *ngFor="let item of countryList" [value]="item.value">{{item.country}}</option>
     </select>
-    <!-- <input *ngIf="selectedCountry == 'other'" type="text" id="otherCountry" placeholder="Other country" [(ngModel)]="otherCountry"> -->
-    <mat-form-field class="example-full-width">
+    <input *ngIf="selectedCountry == 'other'" type="text" id="otherCountry" placeholder="Other country" [(ngModel)]="otherCountry">
+   
+    <!-- <mat-form-field class="example-full-width">
       <mat-label>Favorite food</mat-label>
       <input matInput *ngIf="selectedCountry == 'other'" type="text" id="otherCountry" placeholder="Other country" [(ngModel)]="otherCountry">
-    </mat-form-field>
+    </mat-form-field> -->
     <button (click)="searchUniversities()">Search</button>
     <p>Searches made: <span id="searchCount">{{searchCount}}</span></p>
     <!-- <table>
@@ -36,7 +38,7 @@
          </tr>
         </tbody>
     </table> -->
-    <div class="mat-elevation-z8" *ngIf=" dataSource.length !== 0">
+    <div class="mat-elevation-z8" *ngIf=" universities.length !== 0">
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Name </th>
@@ -65,7 +67,7 @@
 ></mat-paginator>
       </div>
 
-      <ng-container *ngIf="dataSource == [] || dataSource.length == 0">
+      <ng-container *ngIf="universities == [] || universities.length == 0">
         <p type="text" class="form-control rounded-3 btn mt-5" style="color: black;">No Records Available</p>
     </ng-container>
       
