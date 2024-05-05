@@ -1,0 +1,73 @@
+
+<div class="container">
+    <div class="header">
+        <div>
+            <p class="username">Welcome, {{userData}}</p>
+        </div>
+          <div>
+            <button class="logout-btn" (click)="userServiceService.onLogout()">Logout</button>
+
+          </div>
+    </div>
+    <select id="country"  [(ngModel)]="selectedCountry">
+        <option *ngFor="let item of countryList" [value]="item.value">{{item.country}}</option>
+    </select>
+    <!-- <input *ngIf="selectedCountry == 'other'" type="text" id="otherCountry" placeholder="Other country" [(ngModel)]="otherCountry"> -->
+    <mat-form-field class="example-full-width">
+      <mat-label>Favorite food</mat-label>
+      <input matInput *ngIf="selectedCountry == 'other'" type="text" id="otherCountry" placeholder="Other country" [(ngModel)]="otherCountry">
+    </mat-form-field>
+    <button (click)="searchUniversities()">Search</button>
+    <p>Searches made: <span id="searchCount">{{searchCount}}</span></p>
+    <!-- <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>State/Province</th>
+                <th>Domain</th>
+            </tr>
+        </thead>
+        <tbody id="universityList">
+         <tr *ngFor="let item of universities; let i = index">
+               <td>{{item.name}}</td>
+            <td>{{item['state-province']}}</td>
+            
+            <td><a [href]="transform('http://' + item?.domains[0])" target="_blank">{{item?.domains[0]}}</a></td>
+         </tr>
+        </tbody>
+    </table> -->
+    <div class="mat-elevation-z8" *ngIf=" dataSource.length !== 0">
+        <table mat-table [dataSource]="dataSource">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="state-province">
+            <th mat-header-cell *matHeaderCellDef> State/Province </th>
+            <td mat-cell *matCellDef="let element">{{element['state-province']}} </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="domains">
+            <th mat-header-cell *matHeaderCellDef> Domain </th>
+            <td mat-cell *matCellDef="let element">
+              <a [href]="transform('http://' + element?.domains[0])" target="_blank">{{element?.domains[0]}}</a></td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+        </table>
+      
+  <mat-paginator
+  #paginator
+  [pageSizeOptions]="[10, 50, 100,200,500]"
+  showFirstLastButtons
+></mat-paginator>
+      </div>
+
+      <ng-container *ngIf="dataSource == [] || dataSource.length == 0">
+        <p type="text" class="form-control rounded-3 btn mt-5" style="color: black;">No Records Available</p>
+    </ng-container>
+      
+</div>
+
