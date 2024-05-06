@@ -58,7 +58,10 @@ searchUniversities(){
     this.userServiceService.getdata(payload).subscribe((data) => {
           this.universities = data;
           this.dataSource = new MatTableDataSource(this.universities);  
-          this.dataSource.paginator = this.paginator;
+          setTimeout(() =>{
+            this.dataSource.paginator = this.paginator;
+          }, 1)
+     
             },
       (error) => {
           console.error('Error fetching universities:', error);
