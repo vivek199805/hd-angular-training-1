@@ -22,12 +22,12 @@ export class SearchComponent {
     { value: 'USA', country: 'United States' },
     { value: 'UK', country: 'United Kingdom' },
     { value: 'AU', country: 'Australia' },
-    { value: 'GE',  country: 'Germany' },
-    { value: 'JP',  country: 'Japan' },
-    { value: 'FR',  country: 'France' },
-    { value: 'BR',  country: 'Brazil' },
-    { value: 'CN',  country: 'China' },
-    { value: 'CA',  country: 'Canada' },
+    { value: 'germany',  country: 'Germany' },
+    { value: 'Japan',  country: 'Japan' },
+    { value: 'France',  country: 'France' },
+    { value: 'Brazil',  country: 'Brazil' },
+    { value: 'China',  country: 'China' },
+    { value: 'Canada',  country: 'Canada' },
     { value: 'other',  country: 'Other Country' }
   ]
 
